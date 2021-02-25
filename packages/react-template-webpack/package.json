@@ -1,0 +1,26 @@
+{
+  "name": "react-template-webpack",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "hermanke <hermanke@tencent.com>",
+  "homepage": "https://github.com/careyke/my-scaffold/tree/master/packages/react-template-webpack#readme",
+  "license": "ISC",
+  "main": "lib/react-template-webpack.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/careyke/my-scaffold.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/careyke/my-scaffold/issues"
+  }
+}
