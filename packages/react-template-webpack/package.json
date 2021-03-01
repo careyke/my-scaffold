@@ -1,5 +1,5 @@
 {
-  "name": "react-template-webpack",
+  "name": "@taiji/react-template-webpack",
   "version": "1.0.1",
   "description": "",
   "main": "index.js",
