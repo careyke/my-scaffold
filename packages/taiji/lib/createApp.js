@@ -53,33 +53,43 @@ async function createApp(projectPath, projectName, templateName) {
   console.log();
 
   // 复制模板文件并清理多余文件
-  console.log(`${chalk.green("4.")} Move and clear files from template`);
-  const moveSpinner = ora("Move template files ...");
+  console.log(`${chalk.green("4.")} Copy and clear files from template`);
+  const moveSpinner = ora("Copy template files ...");
   moveSpinner.start();
   const srcPath = path.join(
     projectPath,
     `${templateStoreName}/packages/${templateName}`
   );
-  fs.copySync(srcPath, projectPath);
+  fs.copySync(srcPath, projectPath, {
+    filter: (src) => {
+      if (src.endsWith("package.json")) {
+        return false;
+      }
+      return true;
+    },
+  });
   fs.removeSync(path.join(projectPath, templateStoreName));
   moveSpinner.succeed();
   console.log();
 
   // 合并package.json
   console.log(`${chalk.green("5.")} Merge package.json`);
-  const cachedProjectJson = fs.readJSONSync(
-    path.join(projectPath, "package.cache.json")
-  );
-  const packageJsonPath = path.join(projectPath, "package.json");
-  const projectJson = fs.readJSONSync(packageJsonPath);
-  copiedKeys.forEach((key) => {
-    projectJson[key] = cachedProjectJson[key];
-  });
-  fs.writeFileSync(
-    packageJsonPath,
-    JSON.stringify(projectJson, null, 2) + os.EOL
-  );
-  fs.removeSync(path.join(projectPath, "package.cache.json"));
+  const cachedJsonPath = path.join(projectPath, "package.cache.json");
+  if (fs.existsSync(cachedJsonPath)) {
+    const cachedProjectJson = fs.readJSONSync(
+      path.join(projectPath, "package.cache.json")
+    );
+    const packageJsonPath = path.join(projectPath, "package.json");
+    const projectJson = fs.readJSONSync(packageJsonPath);
+    copiedKeys.forEach((key) => {
+      projectJson[key] = cachedProjectJson[key];
+    });
+    fs.writeFileSync(
+      packageJsonPath,
+      JSON.stringify(projectJson, null, 2) + os.EOL
+    );
+    fs.removeSync(path.join(projectPath, "package.cache.json"));
+  }
   console.log(logSymbols.success, "Merge package.json complete");
   console.log();
 
