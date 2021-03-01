@@ -1,5 +1,5 @@
 {
-  "name": "taiji",
+  "name": "@taiji/taiji",
   "version": "1.0.2",
   "description": "project cli",
   "author": "hermanke <hermanke@tencent.com>",
