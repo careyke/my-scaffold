@@ -5,7 +5,7 @@ const logSymbols = require("log-symbols"); // 给终端的输出加入状态符�
 const fs = require("fs-extra");
 const path = require("path");
 
-const emptyDir = require("./utils/emptyDir");
+const { emptyDirSync } = require("./utils/emptyDir");
 
 const packageJson = require("../package.json");
 
@@ -45,7 +45,7 @@ async function init() {
     .prompt([
       {
         type: "list",
-        message: "请选择模板类型",
+        message: "Please choose a template",
         name: "templateName",
         choices: ["react-template-webpack"], // 选择列表，暂时只有一个选项
       },
@@ -59,18 +59,18 @@ async function init() {
       .prompt([
         {
           type: "confirm",
-          message: "当前文件夹已经存在，请问是否可以清空里面的内容",
+          message: "The current folder already exists, can i clear the folder?",
           name: "canCleanDir",
         },
       ])
       .then((answer) => {
         if (!answer.canCleanDir) {
-          console.log(logSymbols.info, "请重新输入其他项目名称");
+          console.log(logSymbols.info, "Please input a new project name");
           process.exit(0);
         } else {
-          console.log(`开始清空文件夹：${chalk.blue(projectPath)}`);
-          emptyDir(projectPath, whitelist);
-          console.log(logSymbols.success, "清空文件夹完成");
+          console.log(`Emptying the folder: ${chalk.blue(projectPath)}`);
+          emptyDirSync(projectPath, whitelist);
+          console.log(logSymbols.success, "Empty complete");
         }
       });
   }

@@ -8,7 +8,7 @@ const path = require("path");
  * @param {*} whitelist
  * @param {*} callback
  */
-module.exports = (dir, whitelist, callback) => {
+const emptyDir = (dir, whitelist, callback) => {
   callback = callback || function () {};
   if (typeof whitelist === "function") {
     callback = whitelist;
@@ -33,4 +33,20 @@ module.exports = (dir, whitelist, callback) => {
     }
     deleteItem();
   });
+};
+
+const emptyDirSync = (dir, whitelist) => {
+  items = fs.readdirSync(dir);
+  items.forEach((item) => {
+    if (whitelist && whitelist.includes(item)) {
+      return;
+    } else {
+      fs.removeSync(path.join(dir, item));
+    }
+  });
+};
+
+module.exports = {
+  emptyDir,
+  emptyDirSync,
 };

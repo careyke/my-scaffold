@@ -1,0 +1,41 @@
+{
+  "name": "react-template-webpack",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "hermanke <hermanke@tencent.com>",
+  "homepage": "https://github.com/careyke/my-scaffold/tree/master/packages/react-template-webpack#readme",
+  "license": "ISC",
+  "main": "lib/react-template-webpack.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": ["lib"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/careyke/my-scaffold.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/careyke/my-scaffold/issues"
+  },
+  "dependencies": {
+    "@types/classnames": "^2.2.11",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-router-dom": "^5.1.7",
+    "antd": "^4.11.2",
+    "axios": "^0.21.1",
+    "classnames": "^2.2.6",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
