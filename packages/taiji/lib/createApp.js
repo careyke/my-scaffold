@@ -8,6 +8,15 @@ const downloadGitRepo = require("download-git-repo");
 const ora = require("ora"); // 终端loading
 
 const templateStoreName = "template";
+// 需要从模板package.json中复制的keys
+const copiedKeys = [
+  "scripts",
+  "devDependencies",
+  "dependencies",
+  "husky",
+  "lint-staged",
+  "browserslist",
+];
 
 async function createApp(projectPath, projectName, templateName) {
   fs.ensureDirSync(projectPath);
@@ -57,10 +66,34 @@ async function createApp(projectPath, projectName, templateName) {
   console.log();
 
   // 合并package.json
-
-  // 执行npm i
+  console.log(`${chalk.green("5.")} Merge package.json`);
+  const cachedProjectJson = fs.readJSONSync(
+    path.join(projectPath, "package.cache.json")
+  );
+  const packageJsonPath = path.join(projectPath, "package.json");
+  const projectJson = fs.readJSONSync(packageJsonPath);
+  copiedKeys.forEach((key) => {
+    projectJson[key] = cachedProjectJson[key];
+  });
+  fs.writeFileSync(
+    packageJsonPath,
+    JSON.stringify(projectJson, null, 2) + os.EOL
+  );
+  fs.removeSync(path.join(projectPath, "package.cache.json"));
+  console.log(logSymbols.success, "Merge package.json complete");
+  console.log();
 
   // finish
+  console.log(`Success! Created ${projectName} at ${projectPath}`);
+  console.log("Inside that directory, you can run several commands:");
+  console.log();
+  console.log(chalk.cyan("npm run dev"));
+  console.log("    Starts the development server.");
+  console.log();
+  console.log(chalk.cyan("npm run build"));
+  console.log("    Bundles the app into static files for production.");
+  console.log();
+  console.log("Happy hacking!");
 }
 
 function downloadTemplate(templateTargetName) {

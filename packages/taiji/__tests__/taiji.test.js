@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
-const taiji = require('..');
+const taiji = require("..");
 
-describe('taiji', () => {
-    it('needs tests');
+describe("taiji", () => {
+  it("needs tests");
 });
