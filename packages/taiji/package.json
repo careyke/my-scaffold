@@ -1,7 +1,7 @@
 {
   "name": "taiji",
   "version": "1.0.0",
-  "description": "> TODO: description",
+  "description": "project cli",
   "author": "hermanke <hermanke@tencent.com>",
   "homepage": "https://github.com/careyke/my-scaffold/tree/master/packages/taiji#readme",
   "license": "ISC",
