@@ -7,7 +7,7 @@ const spawn = require("cross-spawn");
 const downloadGitRepo = require("download-git-repo");
 const ora = require("ora"); // 终端loading
 
-const templateStoreName = "template";
+const templateStoreName = "projectTemplate";
 // 需要从模板package.json中复制的keys
 const copiedKeys = [
   "scripts",

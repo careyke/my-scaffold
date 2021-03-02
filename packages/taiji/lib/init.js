@@ -9,7 +9,7 @@ const { emptyDirSync } = require("./utils/emptyDir");
 
 const packageJson = require("../package.json");
 
-const whitelist = [".git"];
+const whitelist = [".git", "README.md"];
 
 async function init() {
   let projectName;
