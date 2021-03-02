@@ -1,11 +1,15 @@
 # `taiji`
 
-> TODO: description
+> A project cli with webpack config
+
+# Install
+
+```
+npm i carey-taiji -g
+```
 
 ## Usage
 
 ```
-const taiji = require('taiji');
-
-// TODO: DEMONSTRATE API
+taiji <projectName>
 ```
