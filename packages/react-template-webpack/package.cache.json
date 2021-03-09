@@ -63,13 +63,9 @@
     "webpack-merge": "^5.7.3"
   },
   "dependencies": {
-    "@types/classnames": "^2.2.11",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.1.7",
-    "antd": "^4.11.2",
-    "axios": "^0.21.1",
-    "classnames": "^2.2.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0"
@@ -80,19 +76,11 @@
     }
   },
   "lint-staged": {
-    "*.{ts,tsx,js}": [
-      "eslint --config .eslintrc.js"
-    ],
-    "*.{ts,tsx,js,json,html,yml,css,less,scss,md}": [
-      "prettier --write"
-    ]
+    "*.{ts,tsx,js}": ["eslint --config .eslintrc.js"],
+    "*.{ts,tsx,js,json,html,yml,css,less,scss,md}": ["prettier --write"]
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [">0.2%", "not dead", "not op_mini all"],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
