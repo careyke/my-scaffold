@@ -16,6 +16,7 @@ const cssName = isDev ? "css/[name].css" : "css/[name]_[contenthash:8].css";
 const cssClassName = "[name]_[local]_[hash:base64:4]";
 
 module.exports = {
+  target: "web",
   entry: {
     app: path.resolve(SRC_PATH, "index.tsx"),
   },

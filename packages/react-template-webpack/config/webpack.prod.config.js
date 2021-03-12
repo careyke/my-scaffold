@@ -1,6 +1,8 @@
 const { merge } = require("webpack-merge");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+// 这个插件在webpack5之后弃用
+// const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 // 分析打包体积的时候开启这个插件
 // const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
@@ -25,7 +27,7 @@ module.exports = merge(baseConfig, {
   ],
   optimization: {
     minimizer: [
-      new OptimizeCssAssetsPlugin(),
+      new CssMinimizerWebpackPlugin(),
       new TerserWebpackPlugin({
         extractComments: false,
         terserOptions: {

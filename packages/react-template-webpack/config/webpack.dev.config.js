@@ -11,6 +11,9 @@ const baseConfig = require("./webpack.base.config");
 module.exports = merge(baseConfig, {
   mode: "development",
   devtool: "eval-cheap-module-source-map",
+  output: {
+    publicPath: "/",
+  },
   plugins: [
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
@@ -37,6 +40,7 @@ module.exports = merge(baseConfig, {
     openPage: "index.html",
     publicPath: "/", // 需要配置，否则找不到目录
     quiet: true,
+    historyApiFallback: true,
     overlay: {
       warnings: true,
       errors: true,
