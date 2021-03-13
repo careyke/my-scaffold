@@ -47,7 +47,7 @@ async function init() {
         type: "list",
         message: "Please choose a template",
         name: "templateName",
-        choices: ["react-template-webpack"], // 选择列表，暂时只有一个选项
+        choices: ["react-template-webpack", "vue-template-webpack"],
       },
     ])
     .then((answer) => {
