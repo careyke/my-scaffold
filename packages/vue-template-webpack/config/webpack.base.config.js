@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 // const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
 const ESLintWebpackPlugin = require("eslint-webpack-plugin");
+const { VueLoaderPlugin } = require("vue-loader");
 
 const SRC_PATH = path.resolve(__dirname, "../src");
 const NODE_MODULE_PATH = path.resolve(__dirname, "../node_modules");
@@ -18,7 +19,7 @@ const cssClassName = "[name]_[local]_[hash:base64:4]";
 module.exports = {
   target: "web",
   entry: {
-    app: path.resolve(SRC_PATH, "index.tsx"),
+    app: path.resolve(SRC_PATH, "index.ts"),
   },
   output: {
     filename: jsName,
@@ -27,7 +28,7 @@ module.exports = {
   },
   resolve: {
     // modules: [path.resolve(__dirname, "../node_modules")], 模板为了调试不打开，单独的项目建议打开
-    extensions: [".ts", ".tsx", ".js"],
+    extensions: [".ts", ".tsx", ".js", ".vue"],
     alias: {
       "@": SRC_PATH,
       "@components": path.resolve(SRC_PATH, "components"),
@@ -37,6 +38,7 @@ module.exports = {
     },
   },
   plugins: [
+    new VueLoaderPlugin(),
     new ESLintWebpackPlugin({
       extensions: ["tsx", "ts", "js"],
     }),
@@ -67,6 +69,11 @@ module.exports = {
         test: /\.(ts|tsx|js)$/,
         include: SRC_PATH,
         use: ["cache-loader", "babel-loader?cacheDirectory=true"],
+      },
+      {
+        test: /\.vue$/,
+        include: SRC_PATH,
+        use: ["vue-loader"],
       },
       {
         // 处理antd的样式文件，不能使用css module

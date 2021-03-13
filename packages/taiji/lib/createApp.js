@@ -60,6 +60,10 @@ async function createApp(projectPath, projectName, templateName) {
     projectPath,
     `${templateStoreName}/packages/${templateName}`
   );
+  fs.copySync(
+    path.join(srcPath, "package.json"),
+    path.join(srcPath, "package.cache.json")
+  );
   fs.copySync(srcPath, projectPath, {
     filter: (src) => {
       if (src.endsWith("package.json")) {
