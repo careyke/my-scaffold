@@ -13,7 +13,7 @@ const isDev = process.env.NODE_ENV === "development";
 
 const jsName = isDev ? "js/[name].js" : "js/[name]_[chunkhash:8].js";
 const cssName = isDev ? "css/[name].css" : "css/[name]_[contenthash:8].css";
-const cssClassName = "[name]_[local]_[hash:base64:4]";
+const cssClassName = "[name]_[local]_[contenthash:4]";
 
 module.exports = {
   target: "web",
