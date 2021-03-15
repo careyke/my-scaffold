@@ -10,8 +10,10 @@ module.exports = {
       version: "detect",
     },
   },
-  parser: "@typescript-eslint/parser",
+  parser: "vue-eslint-parser", // 用来检测.vue文件
   parserOptions: {
+    // a custom parser used for .ts https://eslint.vuejs.org/user-guide/#how-to-use-a-custom-parser
+    parser: "@typescript-eslint/parser",
     ecmaFeatures: {
       jsx: true,
     },

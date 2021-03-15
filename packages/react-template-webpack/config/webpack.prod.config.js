@@ -14,10 +14,6 @@ const baseConfig = require("./webpack.base.config");
 module.exports = merge(baseConfig, {
   mode: "production",
   devtool: "cheap-module-source-map",
-  output: {
-    library: "fiber-lite-functions", // 可以修改成从package.json中获取
-    libraryTarget: "umd",
-  },
   plugins: [
     // new BundleAnalyzerPlugin(),
     // new PurgeCSSWebpackPlugin({

@@ -40,7 +40,7 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new ESLintWebpackPlugin({
-      extensions: ["tsx", "ts", "js"],
+      extensions: ["tsx", "ts", "js", "vue"],
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "../template/index.html"),
