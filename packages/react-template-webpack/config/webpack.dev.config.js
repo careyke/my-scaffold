@@ -14,6 +14,7 @@ module.exports = merge(baseConfig, {
   output: {
     publicPath: "/",
   },
+  stats: false, // 清除多余日志
   plugins: [
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
@@ -32,14 +33,16 @@ module.exports = merge(baseConfig, {
     // }),
     new webpack.HotModuleReplacementPlugin(),
   ],
+  // webpack4之后配置有修改：changelog
+  // https://github.com/webpack/webpack-dev-server/blob/08a83a65f5c500a648c12faa2fa03122ee380c8b/CHANGELOG.md#400-beta0-2020-11-27
   devServer: {
-    contentBase: path.join(__dirname, "../dist"),
+    static: path.join(__dirname, "../dist"),
     port: 8000,
     compress: true,
     hot: true,
     openPage: "index.html",
-    publicPath: "/", // 需要配置，否则找不到目录
-    quiet: true,
+    // publicPath: "/", // webpack4之后被移到了static中
+    // quiet: true, // webpack4之后去掉了quiet, 使用webpack中的stats模块
     historyApiFallback: true,
     overlay: {
       warnings: true,
