@@ -47,7 +47,11 @@ async function init() {
         type: "list",
         message: "Please choose a template",
         name: "templateName",
-        choices: ["react-template-webpack", "vue-template-webpack"],
+        choices: [
+          "react-template-vite",
+          "react-template-webpack",
+          "vue-template-webpack",
+        ],
       },
     ])
     .then((answer) => {
