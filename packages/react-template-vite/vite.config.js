@@ -10,7 +10,6 @@ export default defineConfig({
     },
   },
   plugins: [
-    new ReactRefreshPlugin(),
     {
       ...eslint({
         fix: true,
@@ -21,6 +20,7 @@ export default defineConfig({
       }),
       enforce: "pre", // 需要配置，否则会编译源文件
     },
+    new ReactRefreshPlugin(), // 这里eslint和react-refresh插件的顺序存在bug，强制eslint在前，否则会出错
   ],
   server: {
     port: 8000,
