@@ -33,20 +33,23 @@ module.exports = merge(baseConfig, {
     // }),
     new webpack.HotModuleReplacementPlugin(),
   ],
-  // webpack4之后配置有修改：changelog
-  // https://github.com/webpack/webpack-dev-server/blob/08a83a65f5c500a648c12faa2fa03122ee380c8b/CHANGELOG.md#400-beta0-2020-11-27
+  // webpack-dev-server4之后配置有修改：changelog
+  // https://github.com/webpack/webpack-dev-server/blob/08a83a65f5c500a648c12faa2fa03122ee380c8b/CHANGELOG.md
   devServer: {
     static: path.join(__dirname, "../dist"),
     port: 8000,
     compress: true,
     hot: true,
-    openPage: "index.html",
-    // publicPath: "/", // webpack4之后被移到了static中
-    // quiet: true, // webpack4之后去掉了quiet, 使用webpack中的stats模块
+    open: ["index.html"],
+    // openPage: "index.html", // webpack-dev-server4之后被移除，使用open统一配置
+    // publicPath: "/", // webpack-dev-server4之后被移到了static中
+    // quiet: true, // webpack-dev-server4之后去掉了quiet, 使用webpack中的stats模块
     historyApiFallback: true,
-    overlay: {
-      warnings: true,
-      errors: true,
+    client: {
+      overlay: {
+        warnings: true,
+        errors: true,
+      },
     },
   },
 });
