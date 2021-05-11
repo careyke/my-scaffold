@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 // 分析打包体积的时候开启这个插件
-// const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 // 这个插件对于css module无法支持
 // const PurgeCSSWebpackPlugin = require("purgecss-webpack-plugin");
 
@@ -15,7 +15,7 @@ module.exports = merge(baseConfig, {
   mode: "production",
   devtool: "cheap-module-source-map",
   plugins: [
-    // new BundleAnalyzerPlugin(),
+    process.env.volume && new BundleAnalyzerPlugin(),
     // new PurgeCSSWebpackPlugin({
     //   paths: glob.sync(`${SRC}/**/*`, { nodir: true }),
     // }),

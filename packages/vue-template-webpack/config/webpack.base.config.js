@@ -3,7 +3,7 @@ const webpack = require("webpack");
 //plugins
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-// const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
+const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
 const ESLintWebpackPlugin = require("eslint-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
 
@@ -56,7 +56,14 @@ module.exports = {
       },
     }),
     new MiniCssExtractPlugin({ filename: cssName }),
-    // new HardSourceWebpackPlugin(),
+    new HardSourceWebpackPlugin(),
+    // HardSourceWebpackPlugin和mini-css-extract-plugin之间冲突，需要去除
+    // https://github.com/mzgoddard/hard-source-webpack-plugin/issues/544
+    new HardSourceWebpackPlugin.ExcludeModulePlugin([
+      {
+        test: /mini-css-extract-plugin[\\/]dist[\\/]loader/,
+      },
+    ]),
     new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV), // 不明白为啥使用JSON.stringify
