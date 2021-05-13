@@ -14,6 +14,7 @@ module.exports = merge(baseConfig, {
   output: {
     publicPath: "/",
   },
+  cache: true,
   stats: false, // 清除多余日志
   plugins: [
     new FriendlyErrorsWebpackPlugin({

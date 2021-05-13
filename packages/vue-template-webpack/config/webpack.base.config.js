@@ -3,7 +3,10 @@ const webpack = require("webpack");
 //plugins
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
+// webpack5之后内置实现hard-source-webpack-plugin，不需要额外增加
+// https://github.com/webpack/webpack/issues/6527
+// https://github.com/mzgoddard/hard-source-webpack-plugin/issues/514
+// const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
 const ESLintWebpackPlugin = require("eslint-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
 
@@ -27,13 +30,11 @@ module.exports = {
     publicPath: "./",
   },
   resolve: {
-    // modules: [path.resolve(__dirname, "../node_modules")], 模板为了调试不打开，单独的项目建议打开
+    modules: [path.resolve(__dirname, "../node_modules")], //模板调试关闭
     extensions: [".ts", ".tsx", ".js", ".vue"],
     alias: {
       "@": SRC_PATH,
       "@components": path.resolve(SRC_PATH, "components"),
-      "@businessComponents": path.resolve(SRC_PATH, "businessComponents"),
-      "@routes": path.resolve(SRC_PATH, "routes"),
       "@utils": path.resolve(SRC_PATH, "utils"),
     },
   },
@@ -56,14 +57,6 @@ module.exports = {
       },
     }),
     new MiniCssExtractPlugin({ filename: cssName }),
-    new HardSourceWebpackPlugin(),
-    // HardSourceWebpackPlugin和mini-css-extract-plugin之间冲突，需要去除
-    // https://github.com/mzgoddard/hard-source-webpack-plugin/issues/544
-    new HardSourceWebpackPlugin.ExcludeModulePlugin([
-      {
-        test: /mini-css-extract-plugin[\\/]dist[\\/]loader/,
-      },
-    ]),
     new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV), // 不明白为啥使用JSON.stringify

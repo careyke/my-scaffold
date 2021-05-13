@@ -9,8 +9,6 @@
     "paths": {
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
-      "@businessComponents/*": ["src/businessComponents/*"],
-      "@routes/*": ["src/routes/*"],
       "@utils/*": ["src/utils/*"]
     },
     "forceConsistentCasingInFileNames": true,
