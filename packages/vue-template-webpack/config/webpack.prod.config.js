@@ -11,16 +11,15 @@ const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 
 const baseConfig = require("./webpack.base.config");
 
+const plugins = [new CleanWebpackPlugin()];
+if (process.env.volume) {
+  plugins.push(new BundleAnalyzerPlugin());
+}
+
 module.exports = merge(baseConfig, {
   mode: "production",
   devtool: "cheap-module-source-map",
-  plugins: [
-    process.env.volume && new BundleAnalyzerPlugin(),
-    // new PurgeCSSWebpackPlugin({
-    //   paths: glob.sync(`${SRC}/**/*`, { nodir: true }),
-    // }),
-    new CleanWebpackPlugin(),
-  ],
+  plugins: plugins,
   optimization: {
     minimizer: [
       new CssMinimizerWebpackPlugin(),
