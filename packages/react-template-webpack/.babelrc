@@ -5,6 +5,7 @@
     "@babel/typescript"
   ],
   "plugins": [
+    "react-hot-loader/babel",
     ["import", { "libraryName": "antd", "style": "css" }],
     "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-transform-runtime"

@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build:volume": "cross-env volume=true vite build"
+    "build:v": "cross-env volume=true vite build"
   },
   "publishConfig": {
     "access": "public"
