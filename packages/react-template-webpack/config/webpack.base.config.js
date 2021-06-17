@@ -86,7 +86,7 @@ module.exports = {
         test: /\.(less|css)$/,
         include: SRC_PATH,
         use: [
-          MiniCssExtractPlugin.loader,
+          isDev ? "style-loader" : MiniCssExtractPlugin.loader, // dev环境下不分包，否则会导致样式文件热更新失效
           {
             loader: "css-loader",
             options: {
