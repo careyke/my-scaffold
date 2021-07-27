@@ -4,12 +4,6 @@ module.exports = {
     browser: true,
     node: true,
   },
-  settings: {
-    react: {
-      pragma: "React",
-      version: "detect",
-    },
-  },
   parser: "vue-eslint-parser", // 用来检测.vue文件
   parserOptions: {
     // a custom parser used for .ts https://eslint.vuejs.org/user-guide/#how-to-use-a-custom-parser
@@ -23,6 +17,7 @@ module.exports = {
   extends: [
     "plugin:@typescript-eslint/recommended",
     "plugin:vue/vue3-recommended",
+    "@vue/prettier", // 修复prettier和eslint-plugin-vue之间的规则冲突
     "plugin:prettier/recommended",
     "@vue/typescript",
     "prettier/@typescript-eslint", //去掉@typescript-eslint中和prettier冲突的规则

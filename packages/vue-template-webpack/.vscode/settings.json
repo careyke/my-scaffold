@@ -1,6 +1,10 @@
 {
   "editor.formatOnSave": true,
   "eslint.format.enable": true,
+  // 先使用eslint修复，在使用prettier修复
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
   // 配置使用prettier来进行修复
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
