@@ -26,7 +26,10 @@ module.exports = merge(baseConfig, {
       new TerserWebpackPlugin({
         extractComments: false,
         terserOptions: {
-          compress: { pure_funcs: ["console.log"] },
+          compress: { pure_funcs: ["console.log"], passes: 2 },
+          format: {
+            comments: false,
+          },
         },
       }),
     ],
