@@ -1,6 +1,6 @@
 {
   "name": "vue-template-webpack-v2",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a template for vue2 with webpack",
   "author": "hermanke <hermanke@tencent.com>",
   "homepage": "https://github.com/careyke/my-scaffold/tree/master/packages/vue-template-webpack-v2#readme",
