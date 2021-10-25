@@ -51,6 +51,7 @@ async function init() {
           "react-template-vite",
           "react-template-webpack",
           "vue-template-webpack",
+          "vue-template-webpack-v2",
         ],
       },
     ])
